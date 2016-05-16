@@ -85,6 +85,11 @@ if [ "$action" == "Install" ] || [ "$action" == "Update" ] ; then
   # Copy Launch Daemon into place
   cp "$launchdaemonfile" "$launchdaemonpath"
   # Copy NTFS Write into place
+  # Check dir exists
+  if [ ! -d "$(dirname $ntfswritepath)" ]; then
+    mkdir $(dirname $ntfswritepath)
+  fi
+  # Copy file 
   cp "$ntfswritefile" "$ntfswritepath"
   # Set permissions and ownership
   chmod +x "$ntfswritepath"
