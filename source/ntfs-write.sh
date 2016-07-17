@@ -32,7 +32,7 @@
 #
 ### Vars
 apptitle="NTFS Write"
-version="1.4 beta"
+version="1.5 beta"
 export LC_ALL=en_US.UTF-8
 mountpath="/Volumes"
 currentuser=$( stat -f%Su /dev/console )
@@ -107,12 +107,13 @@ function getdevdisk () {
 
       # Only select NTFS volumes that are read only
       if [ "$ntfscheck" == "NTFS" ] && [ "$readonlycheck" == "Yes" ] ; then
-         # Create List of "item","item","item" for select dialog
-         devitems=$devitems"\"\t$drivesizehuman \t\t$diskname \t$protocol $location \t\t$disknum\""
-         # Add comma if not last item
-         if [ $c -ne $countdev ] ; then
+        # Create CSV List of "item","item","item" for select dialog
+        # Add comma if not first or last item
+        if [ "$devitems" != "" ] ; then
           devitems=$devitems","
-         fi
+        fi
+        # Add item 
+        devitems=$devitems"\"\t$drivesizehuman \t\t$diskname \t$protocol $location \t\t$disknum\""
       fi
   done
 

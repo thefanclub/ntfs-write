@@ -31,7 +31,7 @@
 #
 ### Vars
 apptitle="NTFS Write - Installer"
-version="1.4 beta"
+version="1.5 beta"
 appversion=$( echo $version | awk {'print $1'})
 export LC_ALL=en_US.UTF-8
 mountpath="/Volumes"
